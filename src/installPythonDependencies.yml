@@ -1,0 +1,14 @@
+---
+- hosts: managedhosts
+  tasks:
+  - name: install nltk
+    pip:
+      name: nltk
+
+  - name: install tflearn
+    pip:
+      name: tflearn
+
+  - name: install tensorflow
+    pip:
+      name: tensorflow
