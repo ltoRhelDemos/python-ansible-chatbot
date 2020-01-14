@@ -15,7 +15,7 @@
         },
         {"tag": "Who",
          "patterns": ["Who are you?", "Are you a Robot?" ],
-         "responses": ["I am chatbot", "I am a robot that answers questions", "I am a good chatter"]
+         "responses": ["I am chatbot specialized on Ansible", "I am a robot that answers questions about Ansible", "I am a good chatter, specially if talk about Ansible"]
         },
         {"tag": "purpose",
          "patterns": ["What is your purpose?", "purpose?", "goal?", "main goal?", "What is your objective in life?" ],
