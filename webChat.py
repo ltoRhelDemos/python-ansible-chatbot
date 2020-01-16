@@ -182,7 +182,7 @@ def printBanner():
 ###########################################
 if __name__ == "__main__":
 	
-	
+	printBanner()
 	_helpMessage = "webChat.py webPort=browser_port chatbotEnginePort=chatbot_engine_port homedir=path_to_home botName=BOT title=interfaceTitle subtitle=interface_subtitle comment=third_line_in_the_title_header questionSentence=sentence_in_the_question_box buttonText=text_of_the_action_button"
 
 	for arg in argv:
