@@ -161,6 +161,22 @@ def form():
 	
 	return chatTemplate%(_title, _subtitle, _comment, _questionSentence, _buttonText, _botName, "###    "+returnValue)
 
+#--------------------------------------------------------      
+def printBanner():
+	print( '''
+  _____          _   _    _       _   
+ |  __ \        | | | |  | |     | |  
+ | |__) |___  __| | | |__| | __ _| |_ 
+ |  _  // _ \/ _` | |  __  |/ _` | __|
+ | | \ \  __/ (_| | | |  | | (_| | |_ 
+ |_|  \_\___|\__,_| |_|  |_|\__,_|\__|
+
+  Ansible AI Chatbot Demo
+  Alejandro Dirgan 2019  
+  Latam Technology Office
+                
+	''')
+   
 ###########################################
 ###########################################
 ###########################################
@@ -237,5 +253,6 @@ if __name__ == "__main__":
 			except Exception as pythonError: 
 				pass
 
+	printBanner()
 	
 	app.run(host='0.0.0.0', port=_webPort, debug=True, threaded=True)
