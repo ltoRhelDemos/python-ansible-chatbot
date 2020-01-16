@@ -49,22 +49,6 @@ _stats = {}
 
 refreshTime = 1
 
-
-print( '''
-  _____          _   _    _       _
- |  __ \        | | | |  | |     | |
- | |__) |___  __| | | |__| | __ _| |_
- |  _  // _ \/ _` | |  __  |/ _` | __|
- | | \ \  __/ (_| | | |  | | (_| | |_
- |_|  \_\___|\__,_| |_|  |_|\__,_|\__|
-
-  Ansible AI Chatbot Demo
-  Alejandro Dirgan 2019
-  Latam Technology Office
-
-''')
-
-
 ###########
 ##   P   ##
 ###########
@@ -177,12 +161,29 @@ def form():
 	
 	return chatTemplate%(_title, _subtitle, _comment, _questionSentence, _buttonText, _botName, "###    "+returnValue)
 
-   
+#--------------------------------------------------------
+def printBanner()
+
+	print( '''
+  _____          _   _    _       _
+ |  __ \        | | | |  | |     | |
+ | |__) |___  __| | | |__| | __ _| |_
+ |  _  // _ \/ _` | |  __  |/ _` | __|
+ | | \ \  __/ (_| | | |  | | (_| | |_
+ |_|  \_\___|\__,_| |_|  |_|\__,_|\__|
+
+  Ansible AI Chatbot Demo
+  Alejandro Dirgan 2019
+  Latam Technology Office
+
+	''')
+
 ###########################################
 ###########################################
 ###########################################
 if __name__ == "__main__":
 	
+	printBanner()
 	_helpMessage = "webChat.py webPort=browser_port chatbotEnginePort=chatbot_engine_port homedir=path_to_home botName=BOT title=interfaceTitle subtitle=interface_subtitle comment=third_line_in_the_title_header questionSentence=sentence_in_the_question_box buttonText=text_of_the_action_button"
 
 	for arg in argv:
