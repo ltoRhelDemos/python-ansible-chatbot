@@ -595,6 +595,7 @@ if __name__ == '__main__':
 		global stop
 		stop = server.doStopServer
 		signal.signal(signal.SIGINT, stopServerHandler)
+		signal.signal(signal.SIGTERM, stopServerHandler)
 
 		server.start()
 
