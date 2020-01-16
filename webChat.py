@@ -162,7 +162,7 @@ def form():
 	return chatTemplate%(_title, _subtitle, _comment, _questionSentence, _buttonText, _botName, "###    "+returnValue)
 
 #--------------------------------------------------------
-def printBanner()
+def printBanner():
 
 	print( '''
   _____          _   _    _       _
