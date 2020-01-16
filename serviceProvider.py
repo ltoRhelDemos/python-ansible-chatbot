@@ -482,7 +482,7 @@ class serviceProvider():
 #-------------------------------------------------------------------------------------------------------------------
 def stopServerHandler(signum, frame):
 #-------------------------------------------------------------------------------------------------------------------
-	print( 'Stopping Server with Ctrl-C')
+	print( 'Stopping the service by an external signal!')
 	stop()
 
 
