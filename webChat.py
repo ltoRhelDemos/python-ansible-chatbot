@@ -253,6 +253,5 @@ if __name__ == "__main__":
 			except Exception as pythonError: 
 				pass
 
-	printBanner()
 	
 	app.run(host='0.0.0.0', port=_webPort, debug=True, threaded=True)
