@@ -500,8 +500,9 @@ def printBanner():
  | | \ \  __/ (_| | | |  | | (_| | |_ 
  |_|  \_\___|\__,_| |_|  |_|\__,_|\__|
 
-  Service Provider Demo
-  Alejandro Dirgan 2019              
+  Ansible AI Chatbot Demo
+  Alejandro Dirgan 2019  
+  Latam Technology Office
                 
 	''')
    
