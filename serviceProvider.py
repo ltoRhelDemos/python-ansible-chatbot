@@ -116,11 +116,7 @@ class serviceProvider():
 		print(not os.path.isfile(self.initFile))
 		print(self.initFile)	
 
-		if not os.path.isfile(self.initFile): #or forceStart:
-			shellCommand('echo %s > %s'%(self.pid,self.initFile)).run()
-		else:
-			print( '(init) %s is running or is in a unestable state...\n(init) Stop the process or rm %s'%(self.serviceName,self.initFile))
-			exit(1)
+		shellCommand('echo %s > %s'%(self.pid,self.initFile)).run()
       
 		print( '(init) starting %s!'%self.serviceName)
 		print( '(init) home directory is %s'%(self.home))
