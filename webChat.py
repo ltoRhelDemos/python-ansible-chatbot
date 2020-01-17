@@ -174,7 +174,7 @@ def form():
 			try:
 				returnValue = json.loads(socketData[0])["response"]["answer"]
 			except:
-				returnValue = "Somethig is wirng acceding the chat engine!"
+				returnValue = "Somethig is wrong acceding the chat engine!"
 		else:
 			returnValue = "Somethig is wirng acceding the chat engine!"
 
