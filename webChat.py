@@ -174,9 +174,9 @@ def form():
 			try:
 				returnValue = json.loads(socketData[0])["response"]["answer"]
 			except:
-				returnValue = "Somethig is wrong acceding the chat engine!"
+				returnValue = "Something is wrong accessing the chat engine!"
 		else:
-			returnValue = "Somethig is wirng acceding the chat engine!"
+			returnValue = "Something is wirng accessing the chat engine!"
 
 		return chatTemplate%(_title, _subtitle, _comment, _questionSentence, _buttonText, _botName, "###    "+returnValue)
 	
