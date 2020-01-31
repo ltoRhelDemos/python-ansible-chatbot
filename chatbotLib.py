@@ -22,38 +22,50 @@
 #  
 #  
 
+print("Initializing Chatbot Library...")
+
+import pip
+
+def installModule(package):
+    if hasattr(pip, 'main'):
+        pip.main(['install', package])
+    else:
+        pip._internal.main(['install', package])
+
 try:
 	import nltk
 except: 
-	print( 'chatbotLib: nltk lib not found'   )
-	exit(1)
-
-try:
-	import numpy
-except: 
-	print( 'chatbotLib: numpy lib not found'   )
-	exit(1)
-
-try:
-	import tflearn
-except: 
-	print( 'chatbotLib: tflearn lib not found'   )
-	exit(1)
+	installModule("nltk")
+	import nltk
 
 try:
 	import tensorflow
 except: 
-	print( 'chatbotLib: tensorflow lib not found'   )
-	exit(1)
+	installModule("tensorflow")
+finally:
+	import tensorflow
+
+try:
+	import tflearn
+except: 
+	installModule("tflearn")
+finally:
+	import tflearn
+
+try:
+	import numpy
+except: 
+	installModule("numpy")
+finally:
+	import numpy
 
 import random
 import json
 import pickle
 import signal
+import os	
 
 from nltk.stem.lancaster import LancasterStemmer
-
-
 
 ###########
 ##   C   ##
@@ -62,6 +74,9 @@ class ltoChatbot():
 #-------------------------------------------------------------------------------------------------------------------
 	def __init__(self, botName = "ltoChatbot", corpusFile = "ltoChatbotCorpus.json", specialization="Specialized topic", neurons=10, iterations = 1000, levels = 2, forceTraining=False):
 #-------------------------------------------------------------------------------------------------------------------
+		
+		self.tensorflowTrainFiles=("checkpoint","ltoChatbot.pdata", "ltoChatBot.tflearn.data-00000-of-00001", "ltoChatBot.tflearn.index", "ltoChatBot.tflearn.meta")
+		
 		self._modelOnDisk = "ltoChatBot.tflearn"
 		self._dataOnDisk = "ltoChatbot.pdata"
 		self._conversationOnDisk = "ltoChatbotConversationCorpus.json"
@@ -89,13 +104,12 @@ class ltoChatbot():
 								"I am a specialized bot for responding on an specific topic, please ask something about %s"%self._specialization]
 
 		self.setup()
-	
+		
 		self.train(force=forceTraining, neurons=neurons, trainingIterations = iterations, levels = levels)
 		
 #-------------------------------------------------------------------------------------------------------------------
 	def setup(self):
 #-------------------------------------------------------------------------------------------------------------------
-
 
 		try:
 			with open(self._corpusFile) as file:
@@ -163,8 +177,37 @@ class ltoChatbot():
 				pickle.dump((self._words, self._labels, self._training, self._output), f)
 
 #-------------------------------------------------------------------------------------------------------------------
+	def trainingDataExists(self):
+#-------------------------------------------------------------------------------------------------------------------
+		exists = True
+		for tf in self.tensorflowTrainFiles:
+			try:
+				if not os.path.exists(tf):
+					exists = False
+					break
+			except Exception as e:
+				print(e)
+				
+		return exists
+		
+#-------------------------------------------------------------------------------------------------------------------
+	def removeTrainingData(self):
+#-------------------------------------------------------------------------------------------------------------------
+		for tf in self.tensorflowTrainFiles:
+			try:
+				os.remove(tf)
+			except Exception as e:
+				print(e)
+
+#-------------------------------------------------------------------------------------------------------------------
 	def train(self, force = False, levels = 2, neurons = 10, trainingIterations = 1000, verbose = True):
 #-------------------------------------------------------------------------------------------------------------------
+		if force:
+			self.removeTrainingData()
+		else:	
+			if not self.trainingDataExists():
+				force=True
+
 		tensorflow.reset_default_graph()
 
 		_net = tflearn.input_data(shape=[None, len(self._training[0])])
@@ -176,6 +219,7 @@ class ltoChatbot():
 		_net = tflearn.regression(_net)
 
 		self._model = tflearn.DNN(_net)
+		
 		if force:
 			print("recreating the model!")
 			try:
@@ -250,9 +294,7 @@ if __name__ == '__main__':
 	
 	signal.signal(signal.SIGINT, stopServerHandler)
 
-	chatBot = ltoChatbot(corpusFile="Ansible_Corpus.json", forceTraining=False, levels=2, iterations = 300)
-	
-	chatBot.retrain(iterations=300)
+	chatBot = ltoChatbot(corpusFile="Ansible_Corpus.json", forceTraining=False, levels=2, iterations = 700)
 	
 	while True:
 		resp = chatBot.askBot(input("Alejandro: ").lower(), accuracy=.8)

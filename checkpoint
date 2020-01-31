@@ -1,0 +1,2 @@
+model_checkpoint_path: "/root/demos/chatbot/temp/python-ansible-chatbot/ltoChatBot.tflearn"
+all_model_checkpoint_paths: "/root/demos/chatbot/temp/python-ansible-chatbot/ltoChatBot.tflearn"

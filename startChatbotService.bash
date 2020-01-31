@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 
-cd /home/chatbot && python3 serviceProvider.py
+cd /home/chatbot && python3 serviceProvider.py serviceName="AnsibleChatbot"

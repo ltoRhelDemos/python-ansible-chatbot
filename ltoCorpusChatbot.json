@@ -1,7 +1,7 @@
 {
     "topics": [
         {"tag": "Ansible",
-         "patterns": ["What is ansible?", "Ansible, what is it?", "Ansible?" ],
+         "patterns": ["What is ansible?", "Ansible?" ],
          "responses": ["Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs."]
         },
         {"tag": "Playbook",
@@ -233,43 +233,48 @@
         {"tag": "YAML",
          "patterns": ["What is YAML?", "YAML?", "YAML format?" ],
          "responses": ["Ansible does not want to force people to write programming language code to automate infrastructure, so Ansible uses YAML to define playbook configuration languages and also variable files. YAML is nice because it has a minimum of syntax and is very clean and easy for people to skim. It is a good data format for configuration files and humans, but also machine readable. Ansible’s usage of YAML stemmed from Michael DeHaan’s first use of it inside of Cobbler around 2006. YAML is fairly popular in the dynamic language community and the format has libraries available for serialization in many languages (Python, Perl, Ruby, etc.)."]
-        },
+        }
         {"tag": "Tower",
          "patterns": ["What is Tower?", "Ansible Tower?", "What is Awx?", "What is ansible tower?" ],
          "responses": ["Ansible Tower (formerly ‘AWX’) is a web-based solution that makes Ansible even more easy to use for IT teams of all kinds. It’s designed to be the hub for all of your automation tasks. Tower allows you to control access to who can access what, even allowing sharing of SSH credentials without someone being able to transfer those credentials. Inventory can be graphically managed or synced with a wide variety of cloud sources. It logs all of your jobs, integrates well with LDAP, and has an amazing browsable REST API. Command line tools are available for easy integration with Jenkins as well. Provisioning callbacks provide great support for autoscaling topologies."]
-        },
+        }
         {"tag": "Credentials",
          "patterns": ["What is a credential?", "credentials?" ],
          "responses": ["Authentication details that may be utilized by Tower to launch jobs against machines, to synchronize with inventory sources, and to import project content from a version control system."]
-        },
+        }
         {"tag": "Distributed jobs",
          "patterns": ["What are Distributed jobs?", "Distributes jobs?" ],
          "responses": ["A job that consists of a job template, an inventory, and slice size. When executed, a distributed job slices each inventory into a number of “slice size” chunks, which are then used to run smaller job slices."]
-        },
+        }
         {"tag": "Forks",
          "patterns": ["What is a fork?", "forks?", "fork?" ],
          "responses": ["Ansible and Tower talk to remote nodes in parallel and the level of parallelism can be set serveral ways–during the creation or editing of a Job Template, by passing --forks, or by editing the default in a configuration file. The default is a very conservative 5 forks, though if you have a lot of RAM, you can easily set this to a value like 50 for increased parallelism."]
-        },
+        }
         {"tag": "Organizations",
          "patterns": ["What is an organization?", "organization?", "organizations?" ],
          "responses": ["A logical collection of Users, Teams, Projects, and Inventories. The highest level in the Tower object hierarchy is the Organization."]
-        },
+        }
         {"tag": "Schedules",
          "patterns": ["What is a schedule?", "schedule?"],
          "responses": ["The calendar of dates and times for which a job should run automatically."]
-        },
+        }
         {"tag": "Teams",
          "patterns": ["What is a Team?", "team?"],
          "responses": ["A sub-division of an Organization with associated Users, Projects, Credentials, and Permissions. Teams provide a means to implement role-based access control schemes and delegate responsibilities across Organizations."]
-        },
+        }
+        {"tag": "Teams",
+         "patterns": ["What is a Team?", "team?"],
+         "responses": ["A sub-division of an Organization with associated Users, Projects, Credentials, and Permissions. Teams provide a means to implement role-based access control schemes and delegate responsibilities across Organizations."]
+        }
         {"tag": "Job Template",
          "patterns": ["What is a Job Template?", "Job Template?"],
          "responses": ["The combination of an Ansible playbook and the set of parameters required to launch it."]
-        },
+        }
         {"tag": "Workflow Template",
          "patterns": ["What is a Workflow Template?", "Workflow Template?"],
          "responses": ["A set consisting of any combination of job templates, project syncs, and inventory syncs, linked together in order to execute them as a single unit."]
         }
+        
     ]
 }
 

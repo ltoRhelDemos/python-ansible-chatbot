@@ -21,12 +21,19 @@
 #  MA 02110-1301, USA.
 #  
 #  
+import pip
+
+def installModule(package):
+    if hasattr(pip, 'main'):
+        pip.main(['install', package])
+    else:
+        pip._internal.main(['install', package])
 
 try:
-	from flask import request
+	import flask
 except: 
-	print( 'webChat: flask lib not found'   )
-	exit(1)
+	installModule("flask")
+	import flask
 
 from  sys import exit, path as syspath, argv
 from time import sleep

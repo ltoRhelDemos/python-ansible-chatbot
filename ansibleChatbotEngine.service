@@ -1,0 +1,9 @@
+[Unit]
+Description=This is a non-production chatbot especialized in concepts related to Red Hat Ansible. The service to be started is the chat service.
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bash /home/chatbot/startChatbotService.bash
+
+[Install]
+WantedBy=multi-user.target
